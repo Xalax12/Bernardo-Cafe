@@ -7,15 +7,15 @@ import styles from './Cart.module.css'
 export interface Producto {
   id: string
   nombre: string
-  subtitulo?: string
+  subtitulo: string
   gramaje: string
   precio: number
-  origen?: string
-  altura?: string
-  proceso?: string
-  notas?: string
-  variedad?: string
-  desde?: string
+  origen: string
+  altura: string
+  proceso: string
+  notas: string
+  variedad: string
+  desde: string
 }
 
 export interface CartItem {
