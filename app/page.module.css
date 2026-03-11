@@ -62,7 +62,7 @@
 }
 
 /* ─── HERO ─── */
-.main { min-height: 100vh; }
+.main { min-height: 100vh; overflow-x: hidden; }
 
 .hero {
   min-height: 100vh;
@@ -428,14 +428,14 @@
   .nav { padding: 14px 20px; }
   .navTagline { display: none; }
 
-  .heroAbuelo { width: clamp(200px, 70vw, 320px); }
-
   .cedula { padding: 60px 20px; }
 
   .product { padding: 60px 20px; }
-  .productInner { grid-template-columns: 1fr; gap: 48px; }
-  .productName  { font-size: 40px; }
-  .priceAmount  { font-size: 40px; }
+  .productInner { grid-template-columns: 1fr; gap: 40px; }
+  .productName  { font-size: 36px; }
+  .priceAmount  { font-size: 36px; }
+  .productImage { width: 100%; height: auto; }
+  .productImageCol { width: 100%; }
 
   .footer { padding: 40px 20px; }
 }
