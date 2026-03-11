@@ -1,21 +1,27 @@
 /* ─── NAV ─── */
 .nav {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 48px;
-  background: rgba(245, 240, 232, 0.92);
+  padding: 14px 48px;
+  background: rgba(240, 245, 240, 0.92);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(44, 24, 16, 0.08);
+  border-bottom: 1px solid rgba(26, 46, 26, 0.1);
 }
 
 .navLogo { display: flex; align-items: center; }
-.logoImg { border-radius: 50%; }
+.logoImg  { border-radius: 50%; }
+
+.navBrand {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--green-deep);
+  letter-spacing: 0.02em;
+}
 
 .navCenter {
   position: absolute;
@@ -27,40 +33,32 @@
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--brown-light);
+  color: var(--text-light);
   font-family: 'DM Sans', sans-serif;
 }
 
 .cartBtn {
   position: relative;
-  background: var(--brown-deep);
-  color: var(--cream);
+  background: var(--green-deep);
+  color: var(--bg-light);
   border: none;
   cursor: pointer;
-  width: 44px;
-  height: 44px;
+  width: 44px; height: 44px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   transition: background 0.2s, transform 0.15s;
 }
-.cartBtn:hover { background: var(--green-dark); transform: scale(1.05); }
+.cartBtn:hover { background: var(--green-mid); transform: scale(1.05); }
 
 .cartBadge {
   position: absolute;
-  top: -4px;
-  right: -4px;
-  background: var(--gold);
-  color: var(--brown-deep);
-  font-size: 10px;
-  font-weight: 700;
-  width: 18px;
-  height: 18px;
+  top: -4px; right: -4px;
+  background: var(--accent);
+  color: var(--green-deep);
+  font-size: 10px; font-weight: 700;
+  width: 18px; height: 18px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
 }
 
 /* ─── HERO ─── */
@@ -74,136 +72,129 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
-  background: var(--brown-deep);
   padding-top: 80px;
+  background-color: var(--green-deep);
 }
 
-.heroDecor {
+/* Parallax mountain background */
+.heroBg {
+  position: absolute;
+  inset: -80px 0 -80px 0;
+  background-image: url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1800&q=80');
+  background-size: cover;
+  background-position: center 30%;
+  will-change: transform;
+  z-index: 0;
+}
+.heroBg::after {
+  content: '';
   position: absolute;
   inset: 0;
-  overflow: hidden;
-}
-
-.heroLine {
-  position: absolute;
-  width: 1px;
-  height: 100%;
-  background: linear-gradient(to bottom, transparent, rgba(200, 169, 110, 0.15), transparent);
-  animation: linePulse 4s ease-in-out infinite;
-}
-.heroLine:nth-child(1) { left: 25%; animation-delay: 0s; }
-.heroLine:nth-child(2) { left: 50%; animation-delay: 1.3s; }
-.heroLine:nth-child(3) { left: 75%; animation-delay: 2.6s; }
-
-@keyframes linePulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.8; }
+  background: linear-gradient(
+    to bottom,
+    rgba(26, 46, 26, 0.6) 0%,
+    rgba(26, 46, 26, 0.3) 50%,
+    rgba(26, 46, 26, 0.15) 100%
+  );
 }
 
 .heroContent {
   text-align: center;
-  z-index: 2;
+  z-index: 3;
+  position: relative;
+  padding: 0 24px;
   animation: fadeUp 1s ease forwards;
 }
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .heroEyebrow {
   font-size: 11px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 16px;
+  color: var(--accent-light);
+  margin-bottom: 14px;
 }
 
 .heroTitle {
   display: flex;
   flex-direction: column;
   line-height: 1;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .heroTitleBernardo {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(72px, 12vw, 140px);
+  font-size: clamp(64px, 11vw, 130px);
   font-weight: 900;
-  color: var(--cream);
+  color: #ffffff;
   letter-spacing: -2px;
 }
 
 .heroTitleCafe {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(36px, 6vw, 72px);
+  font-size: clamp(32px, 5.5vw, 66px);
   font-weight: 400;
   font-style: italic;
-  color: var(--gold);
+  color: var(--accent);
   letter-spacing: 4px;
 }
 
 .heroSub {
   font-size: 15px;
-  color: rgba(245, 240, 232, 0.6);
+  color: rgba(240, 245, 240, 0.65);
   letter-spacing: 0.1em;
-}
-
-.heroImageWrap {
-  margin-top: 40px;
-  z-index: 2;
-  animation: fadeUp 1s 0.3s ease both;
-}
-
-.heroImage {
-  border-radius: 50%;
-  border: 3px solid rgba(200, 169, 110, 0.3);
-  filter: drop-shadow(0 20px 60px rgba(0,0,0,0.5));
 }
 
 .heroScroll {
   position: absolute;
-  bottom: 32px;
+  bottom: 28px;
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: 11px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(245, 240, 232, 0.4);
-  z-index: 2;
+  color: rgba(240, 245, 240, 0.45);
+  z-index: 4;
   animation: bounce 2s ease-in-out infinite;
 }
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
+  50%       { transform: translateY(6px); }
 }
+
+.heroDecor { display: none; }
+.heroLine  { display: none; }
 
 /* ─── CEDULA ─── */
 .cedula {
-  background: var(--cream-dark);
+  background: var(--bg-mid);
   padding: 100px 48px;
 }
 
 .cedulaInner {
-  max-width: 1100px;
+  max-width: 560px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
 .cedulaCard {
-  border: 1.5px solid rgba(44, 24, 16, 0.15);
+  width: 100%;
+  border: 1.5px solid rgba(26, 46, 26, 0.15);
   border-radius: 16px;
   overflow: hidden;
   background: var(--white);
-  box-shadow: 0 8px 40px rgba(44, 24, 16, 0.08);
+  box-shadow: 0 8px 40px rgba(26, 46, 26, 0.08);
 }
 
 .cedulaHeader {
-  background: var(--brown-deep);
+  background: var(--green-deep);
   padding: 16px 24px;
 }
 
@@ -211,20 +202,19 @@
   font-size: 10px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--accent-light);
   font-family: 'DM Sans', sans-serif;
 }
 
 .cedulaGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0;
 }
 
 .cedulaField {
   padding: 20px 24px;
-  border-bottom: 1px solid rgba(44, 24, 16, 0.06);
-  border-right: 1px solid rgba(44, 24, 16, 0.06);
+  border-bottom: 1px solid rgba(26, 46, 26, 0.06);
+  border-right: 1px solid rgba(26, 46, 26, 0.06);
 }
 .cedulaField:nth-child(even) { border-right: none; }
 .cedulaField:last-child, .cedulaField:nth-last-child(2) { border-bottom: none; }
@@ -234,7 +224,7 @@
   font-size: 10px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--brown-light);
+  color: var(--text-light);
   margin-bottom: 6px;
 }
 
@@ -242,16 +232,16 @@
   display: block;
   font-family: 'Playfair Display', serif;
   font-size: 18px;
-  color: var(--brown-deep);
+  color: var(--text-dark);
   font-weight: 700;
 }
 
-.cedulaImageWrap { display: flex; align-items: center; justify-content: center; }
-.cedulaImage { border-radius: 12px; box-shadow: 0 12px 48px rgba(44, 24, 16, 0.15); width: 100%; height: auto; }
+.cedulaImageWrap { display: none; }
+.cedulaImage { display: none; }
 
 /* ─── PRODUCT ─── */
 .product {
-  background: var(--cream);
+  background: var(--bg-light);
   padding: 100px 48px;
 }
 
@@ -273,29 +263,27 @@
 
 .productImage {
   border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(44, 24, 16, 0.2);
+  box-shadow: 0 20px 60px rgba(26, 46, 26, 0.18);
   object-fit: cover;
 }
 
 .productBadge {
   position: absolute;
-  top: -12px;
-  right: -12px;
-  background: var(--green-dark);
-  color: var(--cream);
-  font-size: 13px;
-  font-weight: 600;
+  top: -12px; right: -12px;
+  background: var(--green-mid);
+  color: #fff;
+  font-size: 13px; font-weight: 600;
   padding: 8px 14px;
   border-radius: 24px;
   letter-spacing: 0.05em;
-  box-shadow: 0 4px 16px rgba(45, 74, 45, 0.4);
+  box-shadow: 0 4px 16px rgba(58, 107, 58, 0.4);
 }
 
 .productEyebrow {
   font-size: 11px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--green-mid);
+  color: var(--green-base);
   margin-bottom: 12px;
 }
 
@@ -303,14 +291,14 @@
   font-family: 'Playfair Display', serif;
   font-size: 52px;
   font-weight: 900;
-  color: var(--brown-deep);
+  color: var(--text-dark);
   line-height: 1.05;
   margin-bottom: 8px;
 }
 
 .productVariety {
   font-size: 14px;
-  color: var(--brown-light);
+  color: var(--text-light);
   margin-bottom: 28px;
   letter-spacing: 0.05em;
 }
@@ -319,26 +307,18 @@
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
 
 .noteTag {
-  background: var(--cream-dark);
-  border: 1px solid rgba(44, 24, 16, 0.12);
+  background: var(--bg-mid);
+  border: 1px solid rgba(26, 46, 26, 0.15);
   padding: 8px 16px;
   border-radius: 24px;
   font-size: 13px;
-  color: var(--brown-mid);
+  color: var(--text-mid);
   letter-spacing: 0.03em;
 }
-
-.productEtiquetaWrap {
-  margin-bottom: 36px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 8px 32px rgba(44, 24, 16, 0.1);
-}
-.productEtiqueta { width: 100%; height: auto; display: block; }
 
 .productPricing {
   display: flex;
@@ -357,20 +337,20 @@
 .priceCurrency {
   font-size: 20px;
   font-weight: 300;
-  color: var(--brown-mid);
+  color: var(--text-mid);
 }
 
 .priceAmount {
   font-family: 'Playfair Display', serif;
   font-size: 48px;
   font-weight: 900;
-  color: var(--brown-deep);
+  color: var(--text-dark);
   line-height: 1;
 }
 
 .priceUnit {
   font-size: 13px;
-  color: var(--brown-light);
+  color: var(--text-light);
   letter-spacing: 0.05em;
 }
 
@@ -378,8 +358,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background: var(--brown-deep);
-  color: var(--cream);
+  background: var(--green-deep);
+  color: #fff;
   border: none;
   cursor: pointer;
   padding: 16px 28px;
@@ -389,26 +369,26 @@
   font-weight: 500;
   letter-spacing: 0.03em;
   transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-  box-shadow: 0 4px 20px rgba(44, 24, 16, 0.25);
+  box-shadow: 0 4px 20px rgba(26, 46, 26, 0.3);
 }
 .addToCartBtn:hover {
-  background: var(--green-dark);
+  background: var(--green-mid);
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(44, 24, 16, 0.3);
+  box-shadow: 0 8px 28px rgba(26, 46, 26, 0.35);
 }
 
 .shippingNote {
   font-size: 13px;
-  color: var(--brown-light);
+  color: var(--text-light);
   padding: 12px 16px;
-  background: var(--cream-dark);
+  background: var(--bg-mid);
   border-radius: 8px;
-  border-left: 3px solid var(--green-mid);
+  border-left: 3px solid var(--green-base);
 }
 
 /* ─── FOOTER ─── */
 .footer {
-  background: var(--brown-deep);
+  background: var(--green-deep);
   padding: 60px 48px;
   text-align: center;
 }
@@ -417,14 +397,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
-.footerLogo { border-radius: 50%; opacity: 0.8; }
+.footerLogo { display: none; }
+
+.footerBrand {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
 
 .footerText {
   font-size: 13px;
-  color: rgba(245, 240, 232, 0.5);
+  color: rgba(240, 245, 240, 0.45);
   letter-spacing: 0.08em;
 }
 
@@ -432,7 +420,7 @@
   font-family: 'Playfair Display', serif;
   font-style: italic;
   font-size: 16px;
-  color: var(--gold);
+  color: var(--accent);
 }
 
 /* ─── RESPONSIVE ─── */
@@ -440,14 +428,14 @@
   .nav { padding: 14px 20px; }
   .navTagline { display: none; }
 
+  .heroAbuelo { width: clamp(200px, 70vw, 320px); }
+
   .cedula { padding: 60px 20px; }
-  .cedulaInner { grid-template-columns: 1fr; gap: 40px; }
-  .cedulaImageWrap { display: none; }
 
   .product { padding: 60px 20px; }
   .productInner { grid-template-columns: 1fr; gap: 48px; }
-  .productName { font-size: 40px; }
-  .priceAmount { font-size: 40px; }
+  .productName  { font-size: 40px; }
+  .priceAmount  { font-size: 40px; }
 
   .footer { padding: 40px 20px; }
 }

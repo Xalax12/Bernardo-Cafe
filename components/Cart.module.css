@@ -1,13 +1,13 @@
 .backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(44, 24, 16, 0);
+  background: rgba(26, 46, 26, 0);
   z-index: 200;
   pointer-events: none;
   transition: background 0.35s ease;
 }
 .backdropVisible {
-  background: rgba(44, 24, 16, 0.5);
+  background: rgba(26, 46, 26, 0.5);
   pointer-events: all;
 }
 
@@ -18,13 +18,13 @@
   bottom: 0;
   width: 100%;
   max-width: 480px;
-  background: var(--cream);
+  background: var(--bg-light);
   z-index: 201;
   transform: translateX(100%);
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
-  box-shadow: -8px 0 48px rgba(44, 24, 16, 0.2);
+  box-shadow: -8px 0 48px rgba(26, 46, 26, 0.2);
 }
 .drawerOpen { transform: translateX(0); }
 
@@ -34,15 +34,15 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px 24px;
-  border-bottom: 1px solid rgba(44, 24, 16, 0.1);
-  background: var(--brown-deep);
+  border-bottom: 1px solid rgba(26, 46, 26, 0.1);
+  background: var(--green-deep);
   gap: 12px;
 }
 
 .title {
   font-family: 'Playfair Display', serif;
   font-size: 20px;
-  color: var(--cream);
+  color: var(--bg-light);
   flex: 1;
   text-align: center;
 }
@@ -51,7 +51,7 @@
   background: rgba(245, 240, 232, 0.1);
   border: none;
   cursor: pointer;
-  color: var(--cream);
+  color: var(--bg-light);
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -69,8 +69,8 @@
   justify-content: center;
   gap: 8px;
   padding: 16px 24px;
-  background: var(--cream-dark);
-  border-bottom: 1px solid rgba(44, 24, 16, 0.08);
+  background: var(--bg-mid);
+  border-bottom: 1px solid rgba(26, 46, 26, 0.08);
 }
 
 .step {
@@ -78,7 +78,7 @@
   align-items: center;
   gap: 6px;
   font-size: 12px;
-  color: var(--brown-light);
+  color: var(--text-light);
   letter-spacing: 0.05em;
 }
 
@@ -86,7 +86,7 @@
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: rgba(44, 24, 16, 0.1);
+  background: rgba(26, 46, 26, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -96,11 +96,11 @@
 }
 
 .stepActive .stepDot {
-  background: var(--brown-deep);
-  color: var(--cream);
+  background: var(--green-deep);
+  color: var(--bg-light);
 }
 
-.stepActive { color: var(--brown-deep); font-weight: 500; }
+.stepActive { color: var(--green-deep); font-weight: 500; }
 
 .stepDone .stepDot {
   background: var(--green-mid);
@@ -109,7 +109,7 @@
 
 .steps .step:not(:last-child)::after {
   content: '—';
-  color: rgba(44, 24, 16, 0.2);
+  color: rgba(26, 46, 26, 0.2);
   font-size: 10px;
 }
 
@@ -126,13 +126,13 @@
 .empty {
   text-align: center;
   padding: 60px 20px;
-  color: var(--brown-light);
+  color: var(--text-light);
 }
 
 .emptyBtn {
   margin-top: 16px;
-  background: var(--brown-deep);
-  color: var(--cream);
+  background: var(--green-deep);
+  color: var(--bg-light);
   border: none;
   cursor: pointer;
   padding: 12px 24px;
@@ -150,7 +150,7 @@
   padding: 16px;
   background: var(--white);
   border-radius: 12px;
-  border: 1px solid rgba(44, 24, 16, 0.08);
+  border: 1px solid rgba(26, 46, 26, 0.08);
 }
 
 .itemImg {
@@ -164,11 +164,11 @@
   font-family: 'Playfair Display', serif;
   font-size: 15px;
   font-weight: 700;
-  color: var(--brown-deep);
+  color: var(--green-deep);
   margin-bottom: 2px;
 }
-.itemGramaje { font-size: 12px; color: var(--brown-light); margin-bottom: 4px; }
-.itemPrice { font-size: 14px; font-weight: 500; color: var(--brown-mid); }
+.itemGramaje { font-size: 12px; color: var(--text-light); margin-bottom: 4px; }
+.itemPrice { font-size: 14px; font-weight: 500; color: var(--text-mid); }
 
 .itemQty {
   display: flex;
@@ -179,17 +179,17 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  border: 1px solid rgba(44, 24, 16, 0.2);
+  border: 1px solid rgba(26, 46, 26, 0.2);
   background: transparent;
   cursor: pointer;
   font-size: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--brown-deep);
+  color: var(--green-deep);
   transition: all 0.15s;
 }
-.itemQty button:hover { background: var(--brown-deep); color: var(--cream); }
+.itemQty button:hover { background: var(--green-deep); color: var(--bg-light); }
 .itemQty span { font-weight: 600; font-size: 16px; min-width: 20px; text-align: center; }
 
 .totalRow {
@@ -197,17 +197,17 @@
   justify-content: space-between;
   align-items: center;
   padding: 16px;
-  background: var(--cream-dark);
+  background: var(--bg-mid);
   border-radius: 10px;
   font-size: 15px;
-  color: var(--brown-mid);
+  color: var(--text-mid);
 }
 
 .totalAmount {
   font-family: 'Playfair Display', serif;
   font-size: 22px;
   font-weight: 700;
-  color: var(--brown-deep);
+  color: var(--green-deep);
 }
 
 /* Form step */
@@ -218,22 +218,22 @@
   font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--brown-light);
+  color: var(--text-light);
   font-weight: 500;
 }
 .field input {
-  border: 1.5px solid rgba(44, 24, 16, 0.15);
+  border: 1.5px solid rgba(26, 46, 26, 0.15);
   border-radius: 8px;
   padding: 12px 14px;
   font-family: 'DM Sans', sans-serif;
   font-size: 14px;
-  color: var(--brown-deep);
+  color: var(--green-deep);
   background: var(--white);
   outline: none;
   transition: border-color 0.2s;
 }
-.field input:focus { border-color: var(--brown-mid); }
-.field input::placeholder { color: rgba(44, 24, 16, 0.3); }
+.field input:focus { border-color: var(--text-mid); }
+.field input::placeholder { color: rgba(26, 46, 26, 0.3); }
 
 .fieldRow { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
@@ -241,16 +241,16 @@
 .payMethod {
   flex: 1;
   padding: 12px;
-  border: 1.5px solid rgba(44, 24, 16, 0.15);
+  border: 1.5px solid rgba(26, 46, 26, 0.15);
   border-radius: 8px;
   background: var(--white);
   cursor: pointer;
   font-family: 'DM Sans', sans-serif;
   font-size: 13px;
-  color: var(--brown-mid);
+  color: var(--text-mid);
   transition: all 0.2s;
 }
-.payMethod:hover { border-color: var(--brown-mid); }
+.payMethod:hover { border-color: var(--text-mid); }
 .payMethodActive {
   border-color: var(--green-mid);
   background: rgba(61, 107, 61, 0.08);
@@ -263,10 +263,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 14px 16px;
-  background: var(--cream-dark);
+  background: var(--bg-mid);
   border-radius: 10px;
   font-size: 14px;
-  color: var(--brown-mid);
+  color: var(--text-mid);
 }
 
 /* Pago step */
@@ -274,7 +274,7 @@
 
 .pagoBox {
   background: var(--white);
-  border: 1px solid rgba(44, 24, 16, 0.1);
+  border: 1px solid rgba(26, 46, 26, 0.1);
   border-radius: 16px;
   padding: 28px 24px;
   text-align: center;
@@ -285,13 +285,13 @@
 .pagoBox h3 {
   font-family: 'Playfair Display', serif;
   font-size: 22px;
-  color: var(--brown-deep);
+  color: var(--green-deep);
   margin-bottom: 8px;
 }
 
 .pagoInstrucciones {
   font-size: 14px;
-  color: var(--brown-light);
+  color: var(--text-light);
   margin-bottom: 12px;
 }
 
@@ -299,12 +299,12 @@
   font-family: 'Playfair Display', serif;
   font-size: 36px;
   font-weight: 900;
-  color: var(--brown-deep);
+  color: var(--green-deep);
   margin-bottom: 20px;
 }
 
 .pagoDatos {
-  border: 1px solid rgba(44, 24, 16, 0.1);
+  border: 1px solid rgba(26, 46, 26, 0.1);
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 20px;
@@ -316,15 +316,15 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 16px;
-  border-bottom: 1px solid rgba(44, 24, 16, 0.06);
+  border-bottom: 1px solid rgba(26, 46, 26, 0.06);
   font-size: 13px;
 }
 .pagoDato:last-child { border-bottom: none; }
-.pagoDato span { color: var(--brown-light); }
-.pagoDato strong { color: var(--brown-deep); }
+.pagoDato span { color: var(--text-light); }
+.pagoDato strong { color: var(--green-deep); }
 
 .pedidoId {
-  background: var(--cream-dark);
+  background: var(--bg-mid);
   padding: 3px 8px;
   border-radius: 4px;
   font-size: 12px;
@@ -333,7 +333,7 @@
 
 .pagoNota {
   font-size: 12px;
-  color: var(--brown-light);
+  color: var(--text-light);
   line-height: 1.6;
   text-align: left;
   padding: 12px;
@@ -363,33 +363,33 @@
 .confirmadoStep h3 {
   font-family: 'Playfair Display', serif;
   font-size: 26px;
-  color: var(--brown-deep);
+  color: var(--green-deep);
 }
 .confirmadoStep p {
   font-size: 14px;
-  color: var(--brown-light);
+  color: var(--text-light);
   line-height: 1.6;
   max-width: 320px;
 }
 
 .confPedidoId {
-  background: var(--cream-dark);
+  background: var(--bg-mid);
   padding: 12px 20px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
-.confPedidoId span { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brown-light); }
-.confPedidoId strong { font-size: 18px; color: var(--brown-deep); letter-spacing: 0.1em; }
+.confPedidoId span { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-light); }
+.confPedidoId strong { font-size: 18px; color: var(--green-deep); letter-spacing: 0.1em; }
 
-.confNota { font-size: 12px; color: var(--brown-light); }
+.confNota { font-size: 12px; color: var(--text-light); }
 
 /* Primary button */
 .primaryBtn {
   width: 100%;
-  background: var(--brown-deep);
-  color: var(--cream);
+  background: var(--green-deep);
+  color: var(--bg-light);
   border: none;
   cursor: pointer;
   padding: 16px;

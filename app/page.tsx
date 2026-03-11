@@ -3,10 +3,10 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Cart from '@/components/Cart'
-import type { CartItem, Producto } from '@/components/Cart'
+import type { CartItem } from '@/components/Cart'
 import styles from './page.module.css'
 
-const PRODUCTO: Producto = {
+const PRODUCTO = {
   id: 'bernardo-340g',
   nombre: 'Bernardo Café',
   subtitulo: 'Café de Especialidad',
