@@ -1,0 +1,453 @@
+/* ─── NAV ─── */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 48px;
+  background: rgba(245, 240, 232, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(44, 24, 16, 0.08);
+}
+
+.navLogo { display: flex; align-items: center; }
+.logoImg { border-radius: 50%; }
+
+.navCenter {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.navTagline {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brown-light);
+  font-family: 'DM Sans', sans-serif;
+}
+
+.cartBtn {
+  position: relative;
+  background: var(--brown-deep);
+  color: var(--cream);
+  border: none;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.15s;
+}
+.cartBtn:hover { background: var(--green-dark); transform: scale(1.05); }
+
+.cartBadge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--gold);
+  color: var(--brown-deep);
+  font-size: 10px;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── HERO ─── */
+.main { min-height: 100vh; }
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--brown-deep);
+  padding-top: 80px;
+}
+
+.heroDecor {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.heroLine {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(200, 169, 110, 0.15), transparent);
+  animation: linePulse 4s ease-in-out infinite;
+}
+.heroLine:nth-child(1) { left: 25%; animation-delay: 0s; }
+.heroLine:nth-child(2) { left: 50%; animation-delay: 1.3s; }
+.heroLine:nth-child(3) { left: 75%; animation-delay: 2.6s; }
+
+@keyframes linePulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+.heroContent {
+  text-align: center;
+  z-index: 2;
+  animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.heroEyebrow {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.heroTitle {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.heroTitleBernardo {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(72px, 12vw, 140px);
+  font-weight: 900;
+  color: var(--cream);
+  letter-spacing: -2px;
+}
+
+.heroTitleCafe {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--gold);
+  letter-spacing: 4px;
+}
+
+.heroSub {
+  font-size: 15px;
+  color: rgba(245, 240, 232, 0.6);
+  letter-spacing: 0.1em;
+}
+
+.heroImageWrap {
+  margin-top: 40px;
+  z-index: 2;
+  animation: fadeUp 1s 0.3s ease both;
+}
+
+.heroImage {
+  border-radius: 50%;
+  border: 3px solid rgba(200, 169, 110, 0.3);
+  filter: drop-shadow(0 20px 60px rgba(0,0,0,0.5));
+}
+
+.heroScroll {
+  position: absolute;
+  bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.4);
+  z-index: 2;
+  animation: bounce 2s ease-in-out infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* ─── CEDULA ─── */
+.cedula {
+  background: var(--cream-dark);
+  padding: 100px 48px;
+}
+
+.cedulaInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.cedulaCard {
+  border: 1.5px solid rgba(44, 24, 16, 0.15);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: 0 8px 40px rgba(44, 24, 16, 0.08);
+}
+
+.cedulaHeader {
+  background: var(--brown-deep);
+  padding: 16px 24px;
+}
+
+.cedulaHeaderText {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-family: 'DM Sans', sans-serif;
+}
+
+.cedulaGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.cedulaField {
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(44, 24, 16, 0.06);
+  border-right: 1px solid rgba(44, 24, 16, 0.06);
+}
+.cedulaField:nth-child(even) { border-right: none; }
+.cedulaField:last-child, .cedulaField:nth-last-child(2) { border-bottom: none; }
+
+.cedulaLabel {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--brown-light);
+  margin-bottom: 6px;
+}
+
+.cedulaValue {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: var(--brown-deep);
+  font-weight: 700;
+}
+
+.cedulaImageWrap { display: flex; align-items: center; justify-content: center; }
+.cedulaImage { border-radius: 12px; box-shadow: 0 12px 48px rgba(44, 24, 16, 0.15); width: 100%; height: auto; }
+
+/* ─── PRODUCT ─── */
+.product {
+  background: var(--cream);
+  padding: 100px 48px;
+}
+
+.productInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.productImageCol { display: flex; justify-content: center; }
+
+.productImageWrap {
+  position: relative;
+  display: inline-block;
+}
+
+.productImage {
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(44, 24, 16, 0.2);
+  object-fit: cover;
+}
+
+.productBadge {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  background: var(--green-dark);
+  color: var(--cream);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 24px;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 16px rgba(45, 74, 45, 0.4);
+}
+
+.productEyebrow {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--green-mid);
+  margin-bottom: 12px;
+}
+
+.productName {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px;
+  font-weight: 900;
+  color: var(--brown-deep);
+  line-height: 1.05;
+  margin-bottom: 8px;
+}
+
+.productVariety {
+  font-size: 14px;
+  color: var(--brown-light);
+  margin-bottom: 28px;
+  letter-spacing: 0.05em;
+}
+
+.productNotes {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.noteTag {
+  background: var(--cream-dark);
+  border: 1px solid rgba(44, 24, 16, 0.12);
+  padding: 8px 16px;
+  border-radius: 24px;
+  font-size: 13px;
+  color: var(--brown-mid);
+  letter-spacing: 0.03em;
+}
+
+.productEtiquetaWrap {
+  margin-bottom: 36px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(44, 24, 16, 0.1);
+}
+.productEtiqueta { width: 100%; height: auto; display: block; }
+
+.productPricing {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.productPrice {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.priceCurrency {
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--brown-mid);
+}
+
+.priceAmount {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--brown-deep);
+  line-height: 1;
+}
+
+.priceUnit {
+  font-size: 13px;
+  color: var(--brown-light);
+  letter-spacing: 0.05em;
+}
+
+.addToCartBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--brown-deep);
+  color: var(--cream);
+  border: none;
+  cursor: pointer;
+  padding: 16px 28px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(44, 24, 16, 0.25);
+}
+.addToCartBtn:hover {
+  background: var(--green-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(44, 24, 16, 0.3);
+}
+
+.shippingNote {
+  font-size: 13px;
+  color: var(--brown-light);
+  padding: 12px 16px;
+  background: var(--cream-dark);
+  border-radius: 8px;
+  border-left: 3px solid var(--green-mid);
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  background: var(--brown-deep);
+  padding: 60px 48px;
+  text-align: center;
+}
+
+.footerInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.footerLogo { border-radius: 50%; opacity: 0.8; }
+
+.footerText {
+  font-size: 13px;
+  color: rgba(245, 240, 232, 0.5);
+  letter-spacing: 0.08em;
+}
+
+.footerSub {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--gold);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .nav { padding: 14px 20px; }
+  .navTagline { display: none; }
+
+  .cedula { padding: 60px 20px; }
+  .cedulaInner { grid-template-columns: 1fr; gap: 40px; }
+  .cedulaImageWrap { display: none; }
+
+  .product { padding: 60px 20px; }
+  .productInner { grid-template-columns: 1fr; gap: 48px; }
+  .productName { font-size: 40px; }
+  .priceAmount { font-size: 40px; }
+
+  .footer { padding: 40px 20px; }
+}
