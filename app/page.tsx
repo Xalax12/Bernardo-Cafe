@@ -1,8 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Cart from '@/components/Cart'
+import type { CartItem } from '@/components/Cart'
 import styles from './page.module.css'
 
 const PRODUCTO = {
@@ -21,7 +22,7 @@ const PRODUCTO = {
 
 export default function Home() {
   const [cartOpen, setCartOpen] = useState(false)
-  const [cartItems, setCartItems] = useState<{ producto: typeof PRODUCTO; cantidad: number }[]>([])
+  const [cartItems, setCartItems] = useState<CartItem[]>([])
 
   const addToCart = () => {
     setCartItems(prev => {
@@ -34,13 +35,20 @@ export default function Home() {
 
   const totalItems = cartItems.reduce((a, i) => a + i.cantidad, 0)
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const bg = document.getElementById('heroBg')
+      if (bg) bg.style.transform = `translateY(${window.scrollY * 0.4}px)`
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <main className={styles.main}>
       {/* NAV */}
       <nav className={styles.nav}>
-        <div className={styles.navLogo}>
-          <Image src="/images/logo.png" alt="Bernardo Café" width={52} height={52} className={styles.logoImg} />
-        </div>
+        <span className={styles.navBrand}>Bernardo Café</span>
         <div className={styles.navCenter}>
           <span className={styles.navTagline}>Café de Especialidad · Ituango, Antioquia</span>
         </div>
@@ -56,11 +64,7 @@ export default function Home() {
 
       {/* HERO */}
       <section className={styles.hero}>
-        <div className={styles.heroDecor}>
-          <div className={styles.heroLine} />
-          <div className={styles.heroLine} />
-          <div className={styles.heroLine} />
-        </div>
+        <div className={styles.heroBg} id="heroBg" />
         <div className={styles.heroContent}>
           <p className={styles.heroEyebrow}>República de Colombia · Desde 1970</p>
           <h1 className={styles.heroTitle}>
@@ -68,16 +72,6 @@ export default function Home() {
             <span className={styles.heroTitleCafe}>Café</span>
           </h1>
           <p className={styles.heroSub}>El sabor de Ituango en cada taza</p>
-        </div>
-        <div className={styles.heroImageWrap}>
-          <Image
-            src="/images/logo.png"
-            alt="Bernardo"
-            width={280}
-            height={280}
-            className={styles.heroImage}
-            priority
-          />
         </div>
         <div className={styles.heroScroll}>
           <span>Conoce el café</span>
@@ -87,7 +81,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CEDULA INFO SECTION */}
+      {/* CEDULA */}
       <section className={styles.cedula}>
         <div className={styles.cedulaInner}>
           <div className={styles.cedulaCard}>
@@ -121,9 +115,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className={styles.cedulaImageWrap}>
-            <Image src="/images/informacion.png" alt="Cédula de Cafeteros" width={500} height={320} className={styles.cedulaImage} />
-          </div>
         </div>
       </section>
 
@@ -146,17 +137,11 @@ export default function Home() {
             <p className={styles.productEyebrow}>Café de Especialidad</p>
             <h2 className={styles.productName}>Bernardo Antonio</h2>
             <p className={styles.productVariety}>Variedad Castillo · Ituango, Antioquia</p>
-
             <div className={styles.productNotes}>
               <div className={styles.noteTag}>☕ Caramelo</div>
               <div className={styles.noteTag}>🍫 Chocolate</div>
               <div className={styles.noteTag}>🌿 Suave lavado</div>
             </div>
-
-            <div className={styles.productEtiquetaWrap}>
-              <Image src="/images/etiqueta.png" alt="Etiqueta Bernardo Café" width={340} height={200} className={styles.productEtiqueta} />
-            </div>
-
             <div className={styles.productPricing}>
               <div className={styles.productPrice}>
                 <span className={styles.priceCurrency}>$</span>
@@ -170,7 +155,6 @@ export default function Home() {
                 </svg>
               </button>
             </div>
-
             <p className={styles.shippingNote}>
               📦 Envío a todo Colombia · Pago por Bancolombia o Nequi
             </p>
@@ -181,8 +165,8 @@ export default function Home() {
       {/* FOOTER */}
       <footer className={styles.footer}>
         <div className={styles.footerInner}>
-          <Image src="/images/logo.png" alt="Bernardo Café" width={48} height={48} className={styles.footerLogo} />
-          <p className={styles.footerText}>Bernardo Café · Café de Especialidad · Ituango, Antioquia, Colombia</p>
+          <p className={styles.footerBrand}>Bernardo Café</p>
+          <p className={styles.footerText}>Café de Especialidad · Ituango, Antioquia, Colombia</p>
           <p className={styles.footerSub}>Hecho con amor desde 1970</p>
         </div>
       </footer>
@@ -197,3 +181,4 @@ export default function Home() {
     </main>
   )
 }
+

@@ -4,14 +4,21 @@ import { useState } from 'react'
 import Image from 'next/image'
 import styles from './Cart.module.css'
 
-interface Producto {
+export interface Producto {
   id: string
   nombre: string
+  subtitulo?: string
   gramaje: string
   precio: number
+  origen?: string
+  altura?: string
+  proceso?: string
+  notas?: string
+  variedad?: string
+  desde?: string
 }
 
-interface CartItem {
+export interface CartItem {
   producto: Producto
   cantidad: number
 }
