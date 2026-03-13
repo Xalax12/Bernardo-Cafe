@@ -267,8 +267,7 @@ export default function Cart({ isOpen, onClose, items, setItems }: CartProps) {
                 <div className={styles.pagoDatos}>
                   <div className={styles.pagoDato}>
                     <span>Número de cuenta / celular</span>
-                    {/* Aquí va tu número real */}
-                    <strong>🔒 Pendiente de configurar</strong>
+                    <strong>37700027962</strong>
                   </div>
                   <div className={styles.pagoDato}>
                     <span>Titular</span>
