@@ -271,7 +271,7 @@ export default function Cart({ isOpen, onClose, items, setItems }: CartProps) {
                   </div>
                   <div className={styles.pagoDato}>
                     <span>Titular</span>
-                    <strong>Bernardo Café</strong>
+                    <strong>Juan Pablo Salas</strong>
                   </div>
                   <div className={styles.pagoDato}>
                     <span>Referencia de pago</span>
