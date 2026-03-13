@@ -4,6 +4,9 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'Bernardo Café — Café de Especialidad',
   description: 'Café de especialidad desde Ituango, Antioquia. Variedad Castillo, proceso suave lavado, notas a caramelo y chocolate.',
+  icons: {
+    icon: '/favicon.svg',
+  },
   openGraph: {
     title: 'Bernardo Café',
     description: 'Café de especialidad colombiano desde 1970',
