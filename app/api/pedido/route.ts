@@ -15,51 +15,37 @@ export async function POST(req: NextRequest) {
     const pedidoId = generarId()
     const fecha = new Date().toLocaleString('es-CO', { timeZone: 'America/Bogota' })
 
-    console.log('=== NUEVO PEDIDO ===')
-    console.log('ID:', pedidoId)
+    console.log('=== NUEVO PEDIDO ===', pedidoId)
 
     for (const item of items) {
       const subtotal = item.producto.precio * item.cantidad
 
-      const payload = {
+      const params = new URLSearchParams({
         idVenta:        pedidoId,
         fecha:          fecha,
         estado:         'Pendiente',
         idProducto:     item.producto.id,
         metodoPago:     form.metodoPago === 'bancolombia' ? 'Bancolombia' : 'Nequi',
-        cantidad:       item.cantidad,
-        precioUnitario: item.producto.precio,
-        subtotal:       subtotal,
+        cantidad:       String(item.cantidad),
+        precioUnitario: String(item.producto.precio),
+        subtotal:       String(subtotal),
         cliente:        form.nombre,
         telefono:       form.telefono,
         correo:         form.email,
         direccion:      `${form.ciudad} - ${form.direccion}`,
         canalVenta:     'Web',
-        descuento:      0,
-        costoEnvio:     0,
-        total:          total,
-      }
-
-      // Enviar como form-urlencoded que Apps Script maneja mejor
-      const formBody = Object.entries(payload)
-        .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(String(v))}`)
-        .join('&')
-
-      console.log('📤 Enviando a Sheets...')
-
-      const sheetRes = await fetch(SHEET_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: formBody,
-        redirect: 'follow',
+        descuento:      '0',
+        costoEnvio:     '0',
+        total:          String(total),
       })
 
-      const sheetText = await sheetRes.text()
-      console.log('📊 Sheets status:', sheetRes.status)
-      console.log('📊 Sheets body:', sheetText)
-    }
+      const url = `${SHEET_URL}?${params.toString()}`
+      console.log('📤 GET a Sheets...')
 
-    console.log(`✅ Pedido ${pedidoId} procesado`)
+      const sheetRes = await fetch(url, { redirect: 'follow' })
+      const sheetText = await sheetRes.text()
+      console.log('📊 Sheets:', sheetRes.status, sheetText)
+    }
 
     return NextResponse.json({ ok: true, pedidoId })
   } catch (err) {
