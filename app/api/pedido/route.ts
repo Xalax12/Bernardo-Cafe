@@ -17,8 +17,6 @@ export async function POST(req: NextRequest) {
 
     console.log('=== NUEVO PEDIDO ===')
     console.log('ID:', pedidoId)
-    console.log('Cliente:', form.nombre)
-    console.log('Envío:', `${form.ciudad} - ${form.direccion}`)
 
     for (const item of items) {
       const subtotal = item.producto.precio * item.cantidad
@@ -42,12 +40,17 @@ export async function POST(req: NextRequest) {
         total:          total,
       }
 
-      console.log('📤 Enviando a Sheets:', JSON.stringify(payload))
+      // Enviar como form-urlencoded que Apps Script maneja mejor
+      const formBody = Object.entries(payload)
+        .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(String(v))}`)
+        .join('&')
+
+      console.log('📤 Enviando a Sheets...')
 
       const sheetRes = await fetch(SHEET_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'text/plain' },
-        body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formBody,
         redirect: 'follow',
       })
 
@@ -60,7 +63,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ ok: true, pedidoId })
   } catch (err) {
-    console.error('❌ Error procesando pedido:', err)
+    console.error('❌ Error:', err)
     return NextResponse.json({ ok: false, error: 'Error interno' }, { status: 500 })
   }
 }
