@@ -12,8 +12,12 @@
   border-bottom: 1px solid rgba(26, 46, 26, 0.1);
 }
 
-.navLogo { display: flex; align-items: center; }
-.logoImg  { border-radius: 50%; }
+.navLogo { display: flex; align-items: center; gap: 10px; }
+.navAbuelo { border-radius: 50%; border: 2px solid var(--accent); object-fit: cover; width: 38px; height: 38px; }
+
+.abueloWrap { margin: 20px auto 16px; position: relative; z-index: 3; will-change: transform; display: flex; justify-content: center; }
+
+.abueloHero { border-radius: 50%; border: 3px solid rgba(143,175,106,0.6); box-shadow: 0 8px 40px rgba(0,0,0,0.4); object-fit: cover; width: 160px; height: 160px; }
 
 .navBrand {
   font-family: 'Playfair Display', serif;
@@ -450,4 +454,15 @@
   .productImageCol { width: 100%; }
 
   .footer { padding: 40px 20px; }
+}
+
+/* ─── PRODUCTS GRID ─── */
+.productsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+@media (max-width: 768px) {
+  .productsGrid { gap: 60px; }
 }

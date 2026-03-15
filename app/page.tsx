@@ -6,29 +6,46 @@ import Cart from '@/components/Cart'
 import type { CartItem } from '@/components/Cart'
 import styles from './page.module.css'
 
-const PRODUCTO = {
-  id: 'bernardo-340g',
-  nombre: 'Bernardo Café',
-  subtitulo: 'Café de Especialidad',
-  gramaje: '340g',
-  precio: 35000,
-  origen: 'Ituango, Antioquia',
-  altura: '1.520 m.s.n.m.',
-  proceso: 'Suave lavado',
-  notas: 'Caramelo y Chocolate',
-  variedad: 'Castillo',
-  desde: 'desde 1970',
-}
+const PRODUCTOS = [
+  {
+    id: 'bernardo-molido-340g',
+    nombre: 'Bernardo Antonio',
+    subtitulo: 'Café Molido',
+    gramaje: '340g',
+    precio: 35000,
+    origen: 'Ituango, Antioquia',
+    altura: '1.520 m.s.n.m.',
+    proceso: 'Suave lavado',
+    notas: 'Caramelo y Chocolate',
+    variedad: 'Castillo',
+    desde: 'desde 1970',
+    imagen: '/images/producto.jpeg',
+  },
+  {
+    id: 'bernardo-grano-340g',
+    nombre: 'Bernardo Antonio',
+    subtitulo: 'Café en Grano',
+    gramaje: '340g',
+    precio: 35000,
+    origen: 'Ituango, Antioquia',
+    altura: '1.520 m.s.n.m.',
+    proceso: 'Suave lavado',
+    notas: 'Caramelo y Chocolate',
+    variedad: 'Castillo',
+    desde: 'desde 1970',
+    imagen: '/images/producto.jpeg',
+  },
+]
 
 export default function Home() {
   const [cartOpen, setCartOpen] = useState(false)
   const [cartItems, setCartItems] = useState<CartItem[]>([])
 
-  const addToCart = () => {
+  const addToCart = (producto: typeof PRODUCTOS[0]) => {
     setCartItems(prev => {
-      const exists = prev.find(i => i.producto.id === PRODUCTO.id)
-      if (exists) return prev.map(i => i.producto.id === PRODUCTO.id ? { ...i, cantidad: i.cantidad + 1 } : i)
-      return [...prev, { producto: PRODUCTO, cantidad: 1 }]
+      const exists = prev.find(i => i.producto.id === producto.id)
+      if (exists) return prev.map(i => i.producto.id === producto.id ? { ...i, cantidad: i.cantidad + 1 } : i)
+      return [...prev, { producto, cantidad: 1 }]
     })
     setCartOpen(true)
   }
@@ -39,6 +56,8 @@ export default function Home() {
     const handleScroll = () => {
       const bg = document.getElementById('heroBg')
       if (bg) bg.style.transform = `translateY(${window.scrollY * 0.4}px)`
+      const abuelo = document.getElementById('abueloParallax')
+      if (abuelo) abuelo.style.transform = `translateY(${window.scrollY * 0.15}px)`
     }
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
@@ -48,7 +67,16 @@ export default function Home() {
     <main className={styles.main}>
       {/* NAV */}
       <nav className={styles.nav}>
-        <span className={styles.navBrand}>Bernardo Café</span>
+        <div className={styles.navLogo}>
+          <Image
+            src="/images/abuelo.png"
+            alt="Don Bernardo"
+            width={38}
+            height={38}
+            className={styles.navAbuelo}
+          />
+          <span className={styles.navBrand}>Bernardo Café</span>
+        </div>
         <div className={styles.navCenter}>
           <span className={styles.navTagline}>Café de Especialidad · Ituango, Antioquia</span>
         </div>
@@ -71,6 +99,15 @@ export default function Home() {
             <span className={styles.heroTitleBernardo}>Bernardo</span>
             <span className={styles.heroTitleCafe}>Café</span>
           </h1>
+          <div className={styles.abueloWrap} id="abueloParallax">
+            <Image
+              src="/images/abuelo.png"
+              alt="Don Bernardo"
+              width={160}
+              height={160}
+              className={styles.abueloHero}
+            />
+          </div>
           <p className={styles.heroSub}>El sabor de Ituango en cada taza</p>
         </div>
         <div className={styles.heroScroll}>
@@ -118,47 +155,51 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PRODUCT */}
+      {/* PRODUCTS */}
       <section className={styles.product} id="producto">
-        <div className={styles.productInner}>
-          <div className={styles.productImageCol}>
-            <div className={styles.productImageWrap}>
-              <Image
-                src="/images/producto1.jpeg"
-                alt="Bernardo Café 340g"
-                width={420}
-                height={480}
-                className={styles.productImage}
-              />
-              <div className={styles.productBadge}>340g</div>
-            </div>
-          </div>
-          <div className={styles.productInfo}>
-            <p className={styles.productEyebrow}>Café de Especialidad</p>
-            <h2 className={styles.productName}>Bernardo Antonio</h2>
-            <p className={styles.productVariety}>Variedad Castillo · Ituango, Antioquia</p>
-            <div className={styles.productNotes}>
-              <div className={styles.noteTag}>☕ Caramelo</div>
-              <div className={styles.noteTag}>🍫 Chocolate</div>
-              <div className={styles.noteTag}>🌿 Suave lavado</div>
-            </div>
-            <div className={styles.productPricing}>
-              <div className={styles.productPrice}>
-                <span className={styles.priceCurrency}>$</span>
-                <span className={styles.priceAmount}>35.000</span>
-                <span className={styles.priceUnit}>COP / 340g</span>
+        <div className={styles.productsGrid}>
+          {PRODUCTOS.map((prod) => (
+            <div key={prod.id} className={styles.productInner}>
+              <div className={styles.productImageCol}>
+                <div className={styles.productImageWrap}>
+                  <Image
+                    src={prod.imagen}
+                    alt={prod.subtitulo}
+                    width={420}
+                    height={480}
+                    className={styles.productImage}
+                  />
+                  <div className={styles.productBadge}>{prod.gramaje}</div>
+                </div>
               </div>
-              <button className={styles.addToCartBtn} onClick={addToCart}>
-                Agregar al carrito
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </button>
+              <div className={styles.productInfo}>
+                <p className={styles.productEyebrow}>{prod.subtitulo}</p>
+                <h2 className={styles.productName}>{prod.nombre}</h2>
+                <p className={styles.productVariety}>Variedad Castillo · Ituango, Antioquia</p>
+                <div className={styles.productNotes}>
+                  <div className={styles.noteTag}>☕ Caramelo</div>
+                  <div className={styles.noteTag}>🍫 Chocolate</div>
+                  <div className={styles.noteTag}>🌿 Suave lavado</div>
+                </div>
+                <div className={styles.productPricing}>
+                  <div className={styles.productPrice}>
+                    <span className={styles.priceCurrency}>$</span>
+                    <span className={styles.priceAmount}>35.000</span>
+                    <span className={styles.priceUnit}>COP / 340g</span>
+                  </div>
+                  <button className={styles.addToCartBtn} onClick={() => addToCart(prod)}>
+                    Agregar al carrito
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </button>
+                </div>
+                <p className={styles.shippingNote}>
+                  📦 Envío a todo Colombia · Pago por Bancolombia o Nequi
+                </p>
+              </div>
             </div>
-            <p className={styles.shippingNote}>
-              📦 Envío a todo Colombia · Pago por Bancolombia o Nequi
-            </p>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -194,4 +235,3 @@ export default function Home() {
     </main>
   )
 }
-
