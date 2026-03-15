@@ -19,7 +19,7 @@ const PRODUCTOS = [
     notas: 'Caramelo y Chocolate',
     variedad: 'Castillo',
     desde: 'desde 1970',
-    imagen: '/images/producto.jpeg',
+    imagen: '/images/producto-molido.png',
   },
   {
     id: 'bernardo-grano-340g',
