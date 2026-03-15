@@ -173,8 +173,8 @@ export default function Home() {
                 </div>
               </div>
               <div className={styles.productInfo}>
-                <p className={styles.productEyebrow}>{prod.subtitulo}</p>
-                <h2 className={styles.productName}>{prod.nombre}</h2>
+                
+                <h1 className={styles.productName}>{prod.subtitulo}</h1>
                 <p className={styles.productVariety}>Variedad Castillo · Ituango, Antioquia</p>
                 <div className={styles.productNotes}>
                   <div className={styles.noteTag}>☕ Caramelo</div>
