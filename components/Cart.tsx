@@ -82,6 +82,9 @@ export default function Cart({ isOpen, onClose, items, setItems }: CartProps) {
   }
 
   const confirmarPago = () => {
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'Purchase', { value: total, currency: 'COP' })
+    }
     setStep('confirmado')
     setItems([])
   }
@@ -271,7 +274,7 @@ export default function Cart({ isOpen, onClose, items, setItems }: CartProps) {
                   </div>
                   <div className={styles.pagoDato}>
                     <span>Titular</span>
-                    <strong>Juan Pablo Salas</strong>
+                    <strong>Bernardo Café</strong>
                   </div>
                   <div className={styles.pagoDato}>
                     <span>Referencia de pago</span>

@@ -47,6 +47,9 @@ export default function Home() {
       if (exists) return prev.map(i => i.producto.id === producto.id ? { ...i, cantidad: i.cantidad + 1 } : i)
       return [...prev, { producto, cantidad: 1 }]
     })
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'AddToCart', { value: producto.precio, currency: 'COP' })
+    }
     setCartOpen(true)
   }
 
