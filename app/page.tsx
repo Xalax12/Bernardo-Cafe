@@ -33,7 +33,7 @@ const PRODUCTOS = [
     notas: 'Caramelo y Chocolate',
     variedad: 'Castillo',
     desde: 'desde 1970',
-    imagen: '/images/producto.jpeg',
+    imagen: '/images/bernardo_cafe.jpg',
   },
 ]
 
